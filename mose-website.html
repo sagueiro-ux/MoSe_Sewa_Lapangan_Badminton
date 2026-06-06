@@ -9,11 +9,13 @@
 </head>
 <body>
 
-<!-- ═══════════ AUTH OVERLAY ═══════════ -->
+<!-- AUTH OVERLAY -->
 <div class="auth-overlay" id="auth-overlay">
   <div class="auth-card">
     <div class="auth-logo">
-      <div class="auth-logo-icon">🏸</div>
+      <div class="auth-logo-icon">
+        <img src="logo.png" alt="Logo Perusahaan">
+      </div>
       <div class="auth-logo-text">Mo<span>Se</span></div>
     </div>
     <div class="auth-tabs">
@@ -85,23 +87,28 @@
   </div>
 </div>
 
-<!-- ═══════════ NAVBAR ═══════════ -->
+<!-- NAVBAR -->
 <nav>
   <div class="nav-brand">
-    <div class="nav-logo-icon">🏸</div>
+    <div class="nav-logo-icon">
+      <img src="logo.png" alt="Logo Perusahaan" style="border-radius: 50%" width="150" height="50" object-fit: cover;>
+    </div>
     <div class="nav-brand-text">Mo<span>Se</span></div>
   </div>
-  <ul class="nav-links">
-    <li><a href="#" onclick="showSection('home')" id="nav-home" class="active">Home</a></li>
-    <li><a href="#" onclick="showSection('schedule')" id="nav-schedule">Jadwal</a></li>
-    <li><a href="#" onclick="showSection('courts')" id="nav-courts">Court</a></li>
-    <li><a href="#" onclick="showSection('booking')" id="nav-booking" class="nav-cta">Booking</a></li>
-    <li><a href="#" onclick="showSection('profile')" id="nav-profile" style="display:none">👤 Profil</a></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#" onclick="showSection('home');closeMenu()" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="showSection('schedule');closeMenu()" id="nav-schedule">Jadwal</a></li>
+    <li><a href="#" onclick="showSection('courts');closeMenu()" id="nav-courts">Court</a></li>
+    <li><a href="#" onclick="showSection('booking');closeMenu()" id="nav-booking" class="nav-cta">Booking</a></li>
+    <li><a href="#" onclick="showSection('profile');closeMenu()" id="nav-profile" style="display:none">👤 Profil</a></li>
   </ul>
   <div id="nav-user-area"></div>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- ═══════════ HOME ═══════════ -->
+<!-- HOME -->
 <section id="home" class="section active">
   <div class="hero">
     <div class="hero-content">
@@ -142,7 +149,7 @@
   <footer>Dibuat oleh tim <strong>MoSe</strong> · Sewa Lapangan Badminton, Semudah Itu.</footer>
 </section>
 
-<!-- ═══════════ JADWAL ═══════════ -->
+<!-- JADWAL -->
 <section id="schedule" class="section">
   <div class="schedule-wrap">
     <div class="container">
@@ -156,6 +163,7 @@
           <div class="date-selector" id="date-selector-btns"></div>
         </div>
       </div>
+      <div class="schedule-grid-wrapper">
       <div class="schedule-grid">
         <div class="grid-header">Waktu</div>
         <div class="grid-header">🏸 Lapangan A</div>
@@ -164,6 +172,7 @@
         <div class="grid-header">🏸 Lapangan D</div>
       </div>
       <div id="schedule-body"><div class="schedule-loading">⏳ Memuat jadwal...</div></div>
+      </div>
       <div class="legend">
         <div class="legend-item"><div class="legend-dot" style="background:rgba(19,201,142,0.3);border:1.5px solid rgba(19,201,142,0.6);"></div>Tersedia</div>
         <div class="legend-item"><div class="legend-dot" style="background:rgba(26,95,168,0.15);border:1.5px dashed rgba(26,95,168,0.4);"></div>Sudah Dipesan</div>
@@ -174,7 +183,7 @@
   <footer>Dibuat oleh tim <strong>MoSe</strong> · Sewa Lapangan Badminton, Semudah Itu.</footer>
 </section>
 
-<!-- ═══════════ COURTS ═══════════ -->
+<!-- COURTS -->
 <section id="courts" class="section">
   <div class="courts-wrap">
     <div class="container">
@@ -189,7 +198,7 @@
   <footer>Dibuat dengan ❤️ oleh tim <strong>MoSe</strong> · Sewa Lapangan Badminton, Semudah Itu.</footer>
 </section>
 
-<!-- ═══════════ BOOKING ═══════════ -->
+<!-- BOOKING -->
 <section id="booking" class="section">
   <div class="booking-wrap">
     <div class="container">
@@ -299,14 +308,14 @@
   <footer>Dibuat dengan ❤️ oleh tim <strong>MoSe</strong> · Sewa Lapangan Badminton, Semudah Itu.</footer>
 </section>
 
-<!-- ═══════════ PROFILE ═══════════ -->
+<!-- PROFILE -->
 <section id="profile" class="section">
   <div class="profile-wrap">
     <div class="profile-container">
       <div class="profile-header-label">AKUN SAYA</div>
       <div class="profile-page-title">EDIT PROFIL</div>
 
-      <!-- ── Avatar card ── -->
+      <!-- Avatar card -->
       <div class="profile-avatar-card">
         <div class="profile-avatar-wrap">
           <div class="profile-avatar-img" id="profile-avatar-display"></div>
@@ -319,7 +328,7 @@
         </div>
       </div>
 
-      <!-- ── Data Diri ── -->
+      <!--Data Diri-->
       <div class="profile-form-card">
         <div class="profile-card-title">👤 DATA DIRI</div>
         <div class="profile-alert" id="profile-info-alert"></div>
@@ -344,7 +353,7 @@
         <button class="profile-save-btn" id="profile-save-btn" onclick="saveProfileInfo()">💾 Simpan Perubahan</button>
       </div>
 
-      <!-- ── Ganti Password ── -->
+      <!-- Ganti Password -->
       <div class="profile-form-card">
         <div class="profile-card-title">🔐 GANTI PASSWORD</div>
         <div class="profile-alert" id="profile-pw-alert"></div>
@@ -380,16 +389,16 @@
   <footer>Dibuat oleh tim <strong>MoSe</strong> · Sewa Lapangan Badminton, Semudah Itu.</footer>
 </section>
 
-<!-- ═══════════ AVATAR UPLOAD MODAL ═══════════ -->
+<!-- AVATAR UPLOAD MODAL -->
 <div class="avatar-upload-overlay" id="avatar-upload-overlay">
   <div class="avatar-upload-card">
     <div class="avatar-upload-title">📸 GANTI FOTO PROFIL</div>
 
     <div class="avatar-drop-zone" id="avatar-drop-zone"
-         onclick="document.getElementById('avatar-file-input').click()"
-         ondragover="avatarDragOver(event)"
-         ondragleave="avatarDragLeave(event)"
-         ondrop="avatarDrop(event)">
+        onclick="document.getElementById('avatar-file-input').click()"
+        ondragover="avatarDragOver(event)"
+        ondragleave="avatarDragLeave(event)"
+        ondrop="avatarDrop(event)">
       <div class="avatar-drop-icon">🖼️</div>
       <div class="avatar-drop-text">Seret foto ke sini, atau <span>pilih file</span></div>
       <div class="avatar-drop-hint">JPG, PNG, WebP · Maks. 2 MB</div>
@@ -408,7 +417,7 @@
   </div>
 </div>
 
-<!-- ═══════════ QRIS PAYMENT MODAL ═══════════ -->
+<!--QRIS PAYMENT MODAL-->
 <div class="qris-overlay" id="qris-overlay">
   <div class="qris-card">
     <!-- Header -->
@@ -484,19 +493,17 @@
 </div>
 
 <!-- TOAST -->
-
 <div class="toast" id="toast">
   <span class="toast-icon">✅</span>
   <span id="toast-msg">Booking berhasil!</span>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════════
-// CONFIG: Sesuaikan BASE_URL dengan lokasi server PHP Anda
-// ═══════════════════════════════════════════════════════════
-const BASE_URL = 'http://localhost/mose/api'; // Ganti sesuai server XAMPP Anda
 
-// ─── Helpers ─────────────────────────────────────────────────
+// CONFIG: Sesuaikan BASE_URL dengan lokasi server PHP Anda
+const BASE_URL = 'http://localhost/mose/api';
+
+//Helpers 
 const SESSION_KEY = 'mose_session';
 const getSession  = () => JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
 const saveSession = d  => localStorage.setItem(SESSION_KEY, JSON.stringify(d));
@@ -539,10 +546,7 @@ function showToast(msg, isError = false) {
   setTimeout(() => t.classList.remove('show'), 3200);
 }
 
-// ═══════════════════════════════════════════════════════════
 // AUTH SYSTEM
-// ═══════════════════════════════════════════════════════════
-
 function openAuthOverlay(tab) {
   if (tab) switchAuthTab(tab);
   document.getElementById('auth-overlay').classList.add('visible');
@@ -568,7 +572,7 @@ function togglePw(inputId, btn) {
   else { inp.type = 'password'; btn.textContent = '👁'; }
 }
 
-// ─── Register ─────────────────────────────────────────────
+//Register 
 async function doRegister() {
   clearAuthErrors();
   const name  = document.getElementById('reg-name').value.trim();
@@ -619,7 +623,7 @@ async function doLoginAfterRegister(email, pw) {
   }
 }
 
-// ─── Login ────────────────────────────────────────────────
+//Login
 async function doLogin() {
   clearAuthErrors();
   const email = document.getElementById('login-email').value.trim().toLowerCase();
@@ -652,7 +656,7 @@ async function doLogin() {
   onLoginSuccess();
 }
 
-// ─── Logout ───────────────────────────────────────────────
+//Logout
 function doLogout() {
   clearSess();
   updateNavUser();
@@ -660,7 +664,7 @@ function doLogout() {
   showToast('👋 Kamu telah keluar dari akun.');
 }
 
-// ─── After login success ──────────────────────────────────
+//After login success
 function onLoginSuccess() {
   updateNavUser();
   autofillBooking();
@@ -669,7 +673,7 @@ function onLoginSuccess() {
   showToast('✅ Selamat datang, ' + getSession().nama_lengkap.split(' ')[0] + '!');
 }
 
-// ─── Navbar user area ─────────────────────────────────────
+//Navbar user area 
 function updateNavUser() {
   const user = getSession();
   const area = document.getElementById('nav-user-area');
@@ -693,7 +697,7 @@ function updateNavUser() {
   }
 }
 
-// ─── Auth helpers ─────────────────────────────────────────
+//Auth helpers 
 function showFieldErr(id) { document.getElementById(id).classList.add('show'); }
 function clearAuthErrors() {
   document.querySelectorAll('.auth-error').forEach(e => e.classList.remove('show'));
@@ -707,10 +711,7 @@ function showAlert(id, msg, success = false) {
   else el.classList.remove('auth-alert-success');
 }
 
-// ═══════════════════════════════════════════════════════════
 // NAVIGATION
-// ═══════════════════════════════════════════════════════════
-
 function showSection(id) {
   if (id === 'booking' && !getSession()) {
     openAuthOverlay('login');
@@ -733,10 +734,7 @@ function showSection(id) {
   if (id === 'profile')  loadProfilePage();
 }
 
-// ═══════════════════════════════════════════════════════════
 // COURTS — HALAMAN & PREVIEW HOME
-// ═══════════════════════════════════════════════════════════
-
 const COURT_INFO = {
   1: { label:'LAPANGAN A', type:'🏅 Kelas Standard · Lantai Vinyl',     info:[['❄️','Full AC'],['💡','LED 600 lux'],['🎯','Net Standard'],['🏪','Kantin Dekat']], bg:'linear-gradient(160deg,#0d3060 0%,#0a5a3a 100%)' },
   2: { label:'LAPANGAN B', type:'🏅 Kelas Standard · Lantai Vinyl',     info:[['❄️','Full AC'],['💡','LED 600 lux'],['🎯','Net Standard'],['🏪','Kantin Dekat']], bg:'linear-gradient(160deg,#0d3060 0%,#0a5a3a 100%)' },
@@ -829,10 +827,7 @@ async function loadHeroPreview() {
   }).join('');
 }
 
-// ═══════════════════════════════════════════════════════════
 // SCHEDULE — JADWAL REAL-TIME
-// ═══════════════════════════════════════════════════════════
-
 let currentScheduleDate = new Date().toISOString().split('T')[0];
 let scheduleData = {}; // { courtId: [...slots] }
 
@@ -891,7 +886,8 @@ async function renderSchedulePage() {
   const session = getSession();
   let html = '';
   body.style.display = 'grid';
-  body.style.gridTemplateColumns = '100px 1fr 1fr 1fr 1fr';
+  body.style.gridTemplateColumns = 'var(--sched-col, 100px 1fr 1fr 1fr 1fr)';
+  body.style.minWidth = 'var(--sched-min, unset)';
 
   sortedTimes.forEach(time => {
     html += `<div style="display:contents">`;
@@ -924,10 +920,7 @@ async function renderSchedulePage() {
   body.innerHTML = html;
 }
 
-// ═══════════════════════════════════════════════════════════
 // BOOKING
-// ═══════════════════════════════════════════════════════════
-
 let selectedSlots   = []; // array of { schedule_id, start_time, price }
 let scheduleByTime  = {}; // { 'HH:MM' : { schedule_id, price } }
 
@@ -1037,7 +1030,7 @@ function refreshBookingGate() {
   }
 }
 
-// ─── QRIS Payment State ─────────────────────────────────────
+//QRIS Payment State 
 let qrisBookingData = null;   // { items, total, bookingId }
 let qrisTimerInterval = null;
 const QRIS_TIMEOUT_SEC = 300; // 5 menit
@@ -1240,13 +1233,10 @@ function bookFromSchedule(courtId, time) {
   }, 200);
 }
 
-// ═══════════════════════════════════════════════════════════
 // PROFILE
-// ═══════════════════════════════════════════════════════════
-
 let avatarFile = null; // File yang dipilih untuk diupload
 
-// ─── Load & tampilkan data profil ────────────────────────────
+//Load & tampilkan data profil
 async function loadProfilePage() {
   const user = getSession();
   if (!user) return;
@@ -1286,7 +1276,7 @@ function renderProfileUI(user) {
   document.getElementById('profile-email').value = user.email || '';
 }
 
-// ─── Simpan nama lengkap ──────────────────────────────────────
+// Simpan nama lengkap 
 async function saveProfileInfo() {
   const nama = document.getElementById('profile-nama').value.trim();
   const alertEl = document.getElementById('profile-info-alert');
@@ -1366,7 +1356,7 @@ async function saveProfilePassword() {
   showProfileAlert('profile-pw-alert', '✅ Password berhasil diubah!', 'success');
 }
 
-// ─── Helpers profil ───────────────────────────────────────────
+//Helpers profil 
 function showProfileAlert(id, msg, type) {
   const el = document.getElementById(id);
   el.textContent = msg;
@@ -1380,7 +1370,7 @@ function toggleProfilePw(inputId, btn) {
   else { inp.type = 'password'; btn.textContent = '👁'; }
 }
 
-// ─── Avatar Modal ─────────────────────────────────────────────
+// Avatar Modal
 function openAvatarModal() {
   avatarFile = null;
   document.getElementById('avatar-file-input').value = '';
@@ -1479,7 +1469,7 @@ document.getElementById('avatar-upload-overlay')?.addEventListener('click', func
   if (e.target === this) closeAvatarModal();
 });
 
-// ─── Riwayat Booking User ─────────────────────────────────
+//Riwayat Booking User 
 
 async function loadMyBookings() {
   if (!getSession()) return;
@@ -1514,10 +1504,24 @@ document.getElementById('schedule-date-picker')?.addEventListener('change', func
   document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
 });
 
-// ═══════════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════════
+// ─── Mobile Hamburger Menu ─────────────────────────────
+function toggleMenu() {
+  const links = document.getElementById('nav-links');
+  const btn   = document.getElementById('nav-hamburger');
+  links.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+}
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+  const nav = document.querySelector('nav');
+  if (!nav.contains(e.target)) closeMenu();
+});
 
+// INIT
 (function init() {
   updateNavUser();
   loadHeroPreview();
